@@ -2,6 +2,7 @@ import random, string
 
 from hashlib import md5
 
+PREIMAGE_PREFIX = "nakamoto"
 MAX_RANDOM_STR_LEN = 10
 
 def md125(s: str) -> str: # this is the hash function you'll use
@@ -15,7 +16,7 @@ def generate_md125_collisions() -> (str, str):
   digests = {}
 
   while True:
-    preimage = "nakamoto" + random_str()
+    preimage = PREIMAGE_PREFIX + random_str()
     digest = md125(preimage)
     if digest in digests and digests[digest] != preimage:
       return (preimage, digests[digest])
