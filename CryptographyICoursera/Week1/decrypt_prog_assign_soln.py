@@ -15,8 +15,6 @@ def main():
 	expanded_key_hex_prefix = key_hex * int(math.floor(len(ciphertext_hex) / float(len(key_hex))))
 	expanded_key_hex = expanded_key_hex_prefix + key_hex[:(len(ciphertext_hex) - len(expanded_key_hex_prefix))]
 
-	print(len(expanded_key_hex))
-	print(len(ciphertext_hex))
 	plaintext_hex = "0" + hex(int(ciphertext_hex, 16) ^ int(expanded_key_hex, 16))[2:]
 	plaintext = bytes.fromhex(plaintext_hex).decode()
 
